@@ -9,13 +9,6 @@ body
   margin: 10px;
 }
 
-h1 
-{
-  color: #000000;
-  font-family: 'Dancing Script';
-  font-size: 80px;
-}
-
 ul
 {
   display: flex;
@@ -25,7 +18,7 @@ ul
 
 .li2
 {
-  padding-left: 200px;
+  padding-left: 150px;
 }
 
 form 
@@ -37,6 +30,7 @@ form
   background-position: center;
   background-size: cover;
   padding: 180px;
+  padding-right: 198px;
   text-align: center;
 }
 
@@ -49,6 +43,13 @@ label, input, select, button
   border: 0px;
 }
 
+h1 
+{
+  color: #000000;
+  font-family: 'Dancing Script';
+  font-size: 70px;
+}
+
 label
 {
   font-size: 30px;
@@ -59,6 +60,7 @@ input
   font-size: 30px;
   max-width: 100px;
   border-radius: 20px;
+  margin-top: 15px;
 }
 
 select
@@ -68,7 +70,9 @@ select
 
 .bouinv 
 {
-  width: 20px;
+  margin-top: 15px;
+  margin-bottom: 15px;
+  width: 30px;
   height: auto;
 }
 
