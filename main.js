@@ -8,12 +8,38 @@ const submitInput = document.querySelector("[type='submit']")
 const form = document.querySelector("form")
 
 
+/**
+ * Déselectionner l'option déja sélectionnée d'un menu
+ * @param  {HTMLSelectElement} selectElement1 - Le select sélectionné
+ * @param  {HTMLSelectElement} selectElement2 - Le noeud select à modifier
+ */
+const disableSelectValue = (selectElement1, selectElement2) => 
+{
+    const fromValue = selectElement1.value
+
+    const nodes = selectElement2.querySelectorAll('option')
+
+    for (const node of nodes)
+    {
+        if (node.value === fromValue)
+        {
+            (node.setAttribute('disabled', true))
+        }
+        else
+        {
+            (node.removeAttribute('disabled'))
+        }
+    }
+}
+
 const switchCurrencies = (event) => 
 {
     event.preventDefault()
     //TODO: Inverser les monnaies from et to
-    console.log('le bouton switch a été cliqué')
-    [inputFrom.value, inputTo.value] = [inputTo.value, inputFrom.value]
+    console.log('le bouton switch a été cliqué');
+    [inputFrom.value, inputTo.value] = [inputTo.value, inputFrom.value];
+    [selectFromCurrencies.value, selectToCurrencies.value] = [selectToCurrencies.value, selectFromCurrencies.value];
+    //[selectFromCurrencies, selectToCurrencies] = [selectToCurrencies, selectFromCurrencies]
 }
 
 const submitForm = async (event) => 
@@ -115,12 +141,23 @@ const updateSelectValue = async () =>
     }
 }
 
+
 //TODO: traiter la réponse de l'API en remplissant le champ from
 switchButton.addEventListener("click", switchCurrencies)
 form.addEventListener("submit", submitForm)
+selectFromCurrencies.addEventListener("change", (event) => 
+{
+    disableSelectValue(selectFromCurrencies, selectToCurrencies)
+})
+selectToCurrencies.addEventListener("change", (event) => 
+{
+    disableSelectValue(selectToCurrencies, selectFromCurrencies)
+})
 
 //Appel de fonctions au chargement de la page
 updateSelectValue()
+
+
 
 // switchButton.addEventListener
 // (
